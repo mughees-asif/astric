@@ -55,5 +55,5 @@ This will resolve the issue.
 
 ![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
 
-## Go here for full information about how [Expo](https://docs.expo.io/versions/latest/workflow/how-expo-works/) works.
+## Go [here](https://docs.expo.io/versions/latest/workflow/how-expo-works/) for full information about how Expo works.
 
