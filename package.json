@@ -1,7 +1,7 @@
 {
-  "name": "rn-material-kit-free",
+  "name": "astric",
   "version": "1.5.0",
-  "description": "Material Kit React Native. Coded by Creative Tim",
+  "description": "astric",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -40,7 +40,7 @@
     "jest-expo": "~36.0.0"
   },
   "bugs": {
-    "url": "https://github.com/creativetimofficial/material-kit-react-native/issues"
+    "url": "https://https://github.com/mughees-asif/astric/issues"
   },
-  "homepage": "https://demos.creative-tim.com/material-kit-react-native/"
+  "homepage": "https://github.com/mughees-asif/"
 }

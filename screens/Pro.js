@@ -46,7 +46,7 @@ export default class Pro extends React.Component {
                 style={styles.button}
                 color={materialTheme.COLORS.BUTTON_COLOR}
                 onPress={() => navigation.navigate('Home')}>
-                BACK
+                GO BACK
               </Button>
             </Block>
           </Block>
