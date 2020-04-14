@@ -38,7 +38,20 @@
    ```
    npm install -g expo-cli
    ```
-5. On Android, read the QR code from your terminal using the 'Scan QR code' option from the drop-down menu to open your project. On iOS, use the built-in QR code scanner of the Camera app.
+5. Run the local server
 
-6. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
+   ```
+   expo start
+   ```
+6.On Android, read the QR code from your terminal using the 'Scan QR code' option from the drop-down menu to open your project. On iOS, use the built-in QR code scanner of the Camera app.
+
+Note: If you get the error `Something went wrong. Could not load exp://.... Network response timed out.`, quit expo-cli byt hitting `Crtl + C` (Windows) and restart the environment by inputting
+   ```
+   expo start --tunnel
+   ```
+This will resolve the issue.
+
+7. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
+
+## Go here for full information about how [Expo](https://docs.expo.io/versions/latest/workflow/how-expo-works/) works.
 
