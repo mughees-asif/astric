@@ -1,7 +1,7 @@
 # astric
 
 <p align="center">
-  <img src="/assests/images/astric.jpeg">
+  <img src="/assests/images/astric.png">
 </p>
 
 ## Getting Started
