@@ -1,4 +1,4 @@
-# astric 
+# astric*
 
 ![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
 
