@@ -38,7 +38,7 @@
    ```
    npm install -g expo-cli
    ```
-4. Install the (Expo client)[https://expo.io/] directly onto your iOS or Android phone. Make sure your phone and computer are connected to the same network.
+4. Install the [Expo client](https://expo.io/) directly using your iOS or Android phone. Make sure your phone and computer are connected to the same broadband network.
 
 5. On Android, readthe QR code from your terminal using the 'Scan QR code' option from the drop-down menu to open your project. On iOS, use the built-in QR code scanner of the Camera app.
 
