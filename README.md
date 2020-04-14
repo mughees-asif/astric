@@ -1,6 +1,6 @@
-# astric <img src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png" height="60px" width"60px" align="center" />
+# astric 
 
-![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
+![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
 
 ## Getting Started
 
@@ -52,6 +52,8 @@ Note: If you get the error `Something went wrong. Could not load exp://.... Netw
 This will resolve the issue.
 
 7. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
+
+![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
 
 ## Go here for full information about how [Expo](https://docs.expo.io/versions/latest/workflow/how-expo-works/) works.
 
