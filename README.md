@@ -2,7 +2,9 @@
 
 ![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
 
-![alt text2](https://gph.is/g/E3mroOA)
+<img src="https://gph.is/g/E3mroOA" width="40" height="40" />
+
+![alt text](https://gph.is/g/E3mroOA)
 
 ## Getting Started
 
