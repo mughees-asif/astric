@@ -1,6 +1,4 @@
-# astric
-
-<img src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png" width="40" height="40" />
+# astric <img src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png" height="60px" width"60px" align="center" />
 
 ![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
 
