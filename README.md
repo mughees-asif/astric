@@ -50,6 +50,7 @@ Note: If you get the error `Something went wrong. Could not load exp://.... Netw
    expo start --tunnel
    ```
 This will resolve the issue.
+
 7. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
 
 ## Go here for full information about how [Expo](https://docs.expo.io/versions/latest/workflow/how-expo-works/) works.
