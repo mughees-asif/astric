@@ -1,8 +1,6 @@
 # astric
 
-<p align="center">
-  <img src="./assests/images/logo.png">
-</p>
+![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
 
 ## Getting Started
 
