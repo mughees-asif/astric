@@ -20,7 +20,7 @@
 
 ### Running the app. locally
 
-1. Clone the repository
+1. Clone the repository on your local machine
 
    ```
    git clone https://github.com/mughees-asif/astric.git
