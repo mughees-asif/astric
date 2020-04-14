@@ -18,7 +18,7 @@
 
    https://nodejs.org/en/
 
-### Installing
+### Running the app. locally
 
 1. Clone the repository
 
