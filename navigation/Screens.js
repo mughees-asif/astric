@@ -23,7 +23,7 @@ const Drawer = createDrawerNavigator();
 
 const profile = {
   avatar: Images.Profile,
-  name: "Rachel Brown",
+  name: "John Doe",
   type: "Seller",
   plan: "Pro",
   rating: 4.8
@@ -107,7 +107,7 @@ function HomeStack(props) {
         }}
       />
       <Stack.Screen 
-        name="Pro"
+        name="Under Construction"
         component={ProScreen}
         options={{
           header: ({ navigation, scene }) => (
