@@ -23,7 +23,7 @@
 1. Clone the repository
 
    ```
-   git clone https://github.com/mughees-asif/astric
+   git clone https://github.com/mughees-asif/astric.git
    ```
 2. Install dependencies
 
