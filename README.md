@@ -2,6 +2,8 @@
 
 ![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
 
+<iframe src="https://giphy.com/embed/daV4z2HV9jNWvqnQxG" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/daV4z2HV9jNWvqnQxG">via GIPHY</a></p>
+
 ## Getting Started
 
 ### Setting up the development environment
