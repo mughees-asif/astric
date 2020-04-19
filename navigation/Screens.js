@@ -31,7 +31,7 @@ const profile = {
 
 function ProfileStack(props) {
   return (
-    <Stack.Navigator initialRouteName="Profile" mode="card" headerMode="screen">
+    <Stack.Navigator initialRouteName="Profile" mode="card" tr headerMode="screen">
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}

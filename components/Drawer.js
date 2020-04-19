@@ -19,7 +19,7 @@ class DrawerItem extends React.Component {
     const { title, focused } = this.props;
 
     switch (title) {
-      case "Home":
+      case "Test":
         return (
           <Icon
             size={16}
