@@ -53,7 +53,9 @@ This will resolve the issue.
 
 7. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
 
+<p align="center>
 ![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
+</p>
 
 ## Go [here](https://docs.expo.io/versions/latest/workflow/how-expo-works/) for full information about how Expo works.
 
