@@ -1,6 +1,6 @@
 # astric*
 
-![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
+<img align="center" width="600" height="200" src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png">
 
 ## Getting Started
 
