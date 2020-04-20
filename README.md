@@ -1,6 +1,8 @@
 # astric*
 
-![alt text](https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png)
+<p align="center">
+  <img width="600" height="400" src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png">
+</p>
 
 ## Getting Started
 
@@ -45,7 +47,7 @@
    ```
 6. On Android, read the QR code from your terminal using the 'Scan QR code' option from the drop-down menu to open your project. On iOS, use the built-in QR code scanner of the Camera app.
 
-Note: If you get the error `Something went wrong. Could not load exp://.... Network response timed out.`, quit expo by hitting `Crtl + C` (Windows) and restart the environment by inputting
+Note: If you get the error `Something went wrong. Could not load exp://.... Network response timed out.`, quit expo by hitting <kbd>Ctrl</kbd> + <kbd>C</kbd> (Windows) and restart the environment by inputting
    ```
    expo start --tunnel
    ```
@@ -53,7 +55,9 @@ This will resolve the issue.
 
 7. Now that you have successfully run the app, let's modify it. Open project in you favourite IDE and edit some lines. The application should reload automatically once you save your changes.
 
-![alt text](https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/daV4z2HV9jNWvqnQxG/giphy.gif">
+</p>
 
 ## Go [here](https://docs.expo.io/versions/latest/workflow/how-expo-works/) for full information about how Expo works.
 
