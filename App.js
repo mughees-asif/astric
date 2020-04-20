@@ -16,6 +16,7 @@ import { Platform, StatusBar, Image } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import { Block, GalioProvider } from 'galio-framework';
+import * as Font from 'expo-font';
 
 import { Images, products, materialTheme } from './constants/';
 
@@ -24,6 +25,7 @@ import Screens from './navigation/Screens';
 
 // Before rendering any navigation stack
 import { enableScreens } from 'react-native-screens';
+import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
 enableScreens();
 
 // cache app images
@@ -33,6 +35,12 @@ const assetImages = [
   Images.Avatar,
   Images.Onboarding,
 ];
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'leaguespartan-bold': require('./assets/fonts/LeagueSpartan-Bold.otf')
+  });
+};
 
 // cache product images
 products.map(product => assetImages.push(product.image));
@@ -47,7 +55,7 @@ function cacheImages(images) {
   });
 }
 
-export default class App extends React.Component {
+export default class App extends React.Component {  
   state = {
     isLoadingComplete: false,
   };
@@ -56,14 +64,14 @@ export default class App extends React.Component {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
-          startAsync={this._loadResourcesAsync}
+          startAsync={this._loadResourcesAsync, fetchFonts}
           onError={this._handleLoadingError}
           onFinish={this._handleFinishLoading}
         />
       );
     } else {
       return (
-        <NavigationContainer>
+        <NavigationContainer  >
           <GalioProvider theme={materialTheme}>
             <Block flex>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}

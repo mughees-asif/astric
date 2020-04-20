@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Image, StyleSheet, Dimensions, ScrollView, TextInput } from 'react-native';
-import { Button, Block, Text, Input, theme } from 'galio-framework';
+import { Image, StyleSheet, Dimensions, ScrollView, TextInput } from 'react-native';
+import { Block, Text, theme } from 'galio-framework';
 
 import { Icon, Product } from '../components/';
 
@@ -54,16 +54,20 @@ const styles = StyleSheet.create({
     color: '#564787',
     fontWeight: 'bold',
     marginHorizontal: 16,
-    fontSize: 21 
+    fontSize: 20,
+    fontFamily: "leaguespartan-bold"
   },
   search: {
     height: 48,
     width: width - 32,
     color: '#000000',
     fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: "leaguespartan-bold",
     backgroundColor: '#af62Cf',
     marginHorizontal: 16,
     borderRadius: 10,
+    padding: 10
   },
   header: {
     backgroundColor: theme.COLORS.WHITE,

@@ -9,24 +9,13 @@ import materialTheme from '../constants/Theme';
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
-const SearchButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
-    <Icon
-      size={16}
-      family="entypo"
-      name="magnifying-glass"
-      color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-  </TouchableOpacity>
-);
-
 class Header extends React.Component {
   handleLeftPress = () => {
     const { back, navigation } = this.props;
     return (back ? navigation.goBack() : navigation.openDrawer());
   }
 
-  renderRight = () => {
+  renderLeft = () => {
     const { white, title, navigation } = this.props;
 
     if (title === 'Title') {
@@ -95,7 +84,7 @@ class Header extends React.Component {
   render() {
     const { back, title, white, transparent, navigation } = this.props;
     // const { routeName } = navigation.state;
-    const noShadow = ["Search", "Categories", "Deals", "Pro", "Profile"].includes(title);
+    const noShadow = ["Home"].includes(title);
     const headerStyles = [
       !noShadow ? styles.shadow : null,
       transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null,
@@ -105,18 +94,14 @@ class Header extends React.Component {
       <Block style={headerStyles}>
         <NavBar
           back={back}
-          title={title}
+          title={title==='Home' ? '' : title}
+          titleStyle={ styles.title }
           style={styles.navbar}
-          transparent={transparent}
-          right={this.renderRight()}
+          right={this.renderLeft()}
           rightStyle={{ alignItems: 'center' }}
           leftStyle={{ flex: 0.3, paddingTop: 2  }}
-          leftIconName={(back ? 'chevron-left' : 'navicon')}
-          leftIconColor={white ? theme.COLORS.WHITE : theme.COLORS.ICON}
-          titleStyle={[
-            styles.title,
-            {color: theme.COLORS[white ? 'WHITE' : 'ICON']},
-          ]}
+          leftIconName={('navicon')}
+          leftIconColor={ '#af62Cf'}
           onLeftPress={this.handleLeftPress}
         />
         {this.renderHeader()}
@@ -133,9 +118,8 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   title: {
-    width: '100%',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontFamily: "leaguespartan-bold"
   },
   navbar: {
     paddingVertical: 0,
@@ -180,7 +164,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   tab: {
-    backgroundColor: theme.COLORS.WHITE,
+    backgroundColor: theme.COLORS.TRANSPARENT,
     width: width * 0.50,
     borderRadius: 0,
     borderWidth: 0,
