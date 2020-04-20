@@ -47,7 +47,7 @@
    ```
 6. On Android, read the QR code from your terminal using the 'Scan QR code' option from the drop-down menu to open your project. On iOS, use the built-in QR code scanner of the Camera app.
 
-Note: If you get the error `Something went wrong. Could not load exp://.... Network response timed out.`, quit expo by hitting `Crtl + C` (Windows) and restart the environment by inputting
+Note: If you get the error `Something went wrong. Could not load exp://.... Network response timed out.`, quit expo by hitting <kbd>Ctrl</kbd> + <kbd>C</kbd> (Windows) and restart the environment by inputting
    ```
    expo start --tunnel
    ```
