@@ -17,6 +17,7 @@ function CustomDrawerContent({
 }) {
   const insets = useSafeArea();
   const screens = [
+    "Home",
     "Profile",
     "Friends",
     "Offers",
@@ -47,6 +48,7 @@ function CustomDrawerContent({
                 key={index}
                 navigation={navigation}
                 focused={state.index === index ? true : false}
+                fontcolour=''
               />
             );
           })}

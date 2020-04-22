@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import {TouchableOpacity, StyleSheet, Image} from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
 import Icon from "./Icon";
@@ -21,93 +21,52 @@ class DrawerItem extends React.Component {
     switch (title) {
       case "Home":
         return (
-          <Icon
-            size={16}
-            name="shop"
-            family="GalioExtra"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Woman":
-        return (
-          <Icon
-            size={16}
-            name="md-woman"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Man":
-        return (
-          <Icon
-            size={16}
-            name="man"
-            family="entypo"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Kids":
-        return (
-          <Icon
-            size={16}
-            name="baby"
-            family="GalioExtra"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "New Collection":
-        return (
-          <Icon
-            size={16}
-            name="grid-on"
-            family="material"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
+            <Image
+                source={require('../assets/icons/home.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
         );
       case "Profile":
         return (
-          <Icon
-            size={16}
-            name="circle-10"
-            family="GalioExtra"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
+            <Image
+                source={require('../assets/icons/profile.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
+        );
+      case "Friends":
+        return (
+            <Image
+                source={require('../assets/icons/friends.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
+        );
+      case "Offers":
+        return (
+            <Image
+                source={require('../assets/icons/offers.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
+        );
+      case "Notifications":
+        return (
+            <Image
+                source={require('../assets/icons/notifications2.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
         );
       case "Settings":
         return (
-          <Icon
-            size={16}
-            name="gears"
-            family="font-awesome"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
+            <Image
+                source={require('../assets/icons/settings.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
         );
-      case "Components":
+      case "About app":
         return (
-          <Icon
-            size={16}
-            name="md-switch"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Sign In":
-        return (
-          <Icon
-            size={16}
-            name="ios-log-in"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
-        );
-      case "Sign Up":
-        return (
-          <Icon
-            size={16}
-            name="md-person-add"
-            family="ionicon"
-            color={focused ? "white" : materialTheme.COLORS.MUTED}
-          />
+            <Image
+                source={require('../assets/icons/aboutapp.png')}
+                fadeDuration={0}
+                style={{width: 40, height: 40}} />
         );
       default:
         return null;
@@ -115,23 +74,11 @@ class DrawerItem extends React.Component {
   };
 
   renderLabel = () => {
-    const { title } = this.props;
 
-    if (proScreens.includes(title)) {
-      return (
-        <Block middle style={styles.pro}>
-          <Text size={12} color="white">
-            PRO
-          </Text>
-        </Block>
-      );
-    }
-
-    return null;
   };
 
   render() {
-    const { focused, title, navigation } = this.props;
+    const { focused, title, navigation, fontcolour } = this.props;
     const proScreen = proScreens.includes(title);
     return (
       <TouchableOpacity style={{ height: 55 }} onPress={() => {navigation.navigate(title)}}>
@@ -149,13 +96,11 @@ class DrawerItem extends React.Component {
           <Block row center flex={0.9}>
             <Text
               size={18}
-              color={
-                focused
-                  ? "white"
-                  : proScreen
-                  ? materialTheme.COLORS.MUTED
-                  : "black"
-              }
+              style={{
+                fontSize: 20,
+                fontFamily: "leaguespartan-bold",
+                colour: { fontcolour }
+              }}
             >
               {title}
             </Text>
@@ -175,7 +120,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   activeStyle: {
-    backgroundColor: materialTheme.COLORS.ACTIVE,
+    backgroundColor: materialTheme.COLORS.MENU_BACKGROUND,
     borderRadius: 4
   },
   shadow: {

@@ -20,6 +20,13 @@ export default {
     BORDER_COLOR: '#E7E7E7',
     BLOCK: '#E7E7E7',
     ICON: '#4A4A4A',
+    MENU_BACKGROUND: '#CCCCCC',
+    LOGO_A: '#564787',
+    LOGO_S: '#AF62CF',
+    LOGO_T: '#E4BBDD',
+    LOGO_R: '#C0F2FB',
+    LOGO_I: '#76BDC0',
+    LOGO_C: '#0F1935',
   },
   SIZES: {
     BLOCK_SHADOW_RADIUS: 2,

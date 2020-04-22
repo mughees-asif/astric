@@ -369,12 +369,6 @@ const styles = StyleSheet.create({
   inputDefault: {
     borderBottomColor: materialTheme.COLORS.PLACEHOLDER,
   },
-  inputTheme: {
-    borderBottomColor: materialTheme.COLORS.PRIMARY,
-  },
-  inputTheme: {
-    borderBottomColor: materialTheme.COLORS.PRIMARY,
-  },
   inputInfo: {
     borderBottomColor: materialTheme.COLORS.INFO,
   },

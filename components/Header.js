@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     paddingBottom: theme.SIZES.BASE * 1.5,
     paddingTop: iPhoneX ? theme.SIZES.BASE * 4 : theme.SIZES.BASE,
     zIndex: 5,
+
   },
   shadow: {
     backgroundColor: theme.COLORS.WHITE,

@@ -6,6 +6,7 @@ import { Icon, Product } from '../components/';
 
 const { width } = Dimensions.get('screen');
 import products from '../constants/products';
+import {materialTheme} from "../constants";
 
 export default class Home extends React.Component {
   
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   searchText: {
-    color: '#564787',
+    color: materialTheme.COLORS.LOGO_A,
     fontWeight: 'bold',
     marginHorizontal: 16,
     fontSize: 20,
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   search: {
     height: 48,
     width: width - 32,
-    color: '#000000',
+    color: theme.COLORS.BLACK,
     fontWeight: 'bold',
     fontSize: 18,
     fontFamily: "leaguespartan-bold",
