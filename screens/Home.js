@@ -4,7 +4,8 @@ import { Block, Text, theme } from 'galio-framework';
 
 import { Icon, Product } from '../components/';
 
-const { width } = Dimensions.get('screen');
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 import products from '../constants/products';
 import {materialTheme} from "../constants";
 
@@ -22,7 +23,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <Block flex style={styles.home}>
-        <Image 
+        <Image
           style={ styles.logo }
           source={require('../assets/images/zoom.png')}/>
         <Text style={ styles.searchText }>
@@ -40,16 +41,15 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
   home: {
-    width: width,
+    width: windowWidth,
     backgroundColor: 'white',
-    paddingVertical: 200
+    paddingTop: windowHeight/5
   },
   logo: {
-    width: width - 32,
-    height: 100,
+    width: windowWidth - 32,
+    height: windowHeight > 812 ? 250 : 120, //ipad 18, iphone 11, samsung 13 need to find a better way to resize the image
+    resizeMode: 'contain',
     marginHorizontal: 16,
-    borderRadius: 3,
-    marginBottom: 15
   },
   searchText: {
     color: materialTheme.COLORS.LOGO_A,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   search: {
     height: 48,
-    width: width - 32,
+    width: windowWidth - 32,
     color: theme.COLORS.BLACK,
     fontWeight: 'bold',
     fontSize: 18,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     backgroundColor: theme.COLORS.TRANSPARENT,
-    width: width * 0.50,
+    width: windowWidth * 0.50,
     borderRadius: 0,
     borderWidth: 0,
     height: 24,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     borderRightColor: theme.COLORS.MUTED,
   },
   products: {
-    width: width - theme.SIZES.BASE * 2,
+    width: windowWidth - theme.SIZES.BASE * 2,
     paddingVertical: theme.SIZES.BASE * 2,
   },
 });

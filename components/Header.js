@@ -6,8 +6,8 @@ import { Button, Block, NavBar, Input, Text, theme } from 'galio-framework';
 import Icon from './Icon';
 import materialTheme from '../constants/Theme';
 
-const { height, width } = Dimensions.get('window');
-const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 class Header extends React.Component {
   handleLeftPress = () => {
@@ -124,9 +124,8 @@ const styles = StyleSheet.create({
   navbar: {
     paddingVertical: 0,
     paddingBottom: theme.SIZES.BASE * 1.5,
-    paddingTop: iPhoneX ? theme.SIZES.BASE * 4 : theme.SIZES.BASE,
+    paddingTop: windowHeight === 812 ? theme.SIZES.BASE * 4 : theme.SIZES.BASE,
     zIndex: 5,
-
   },
   shadow: {
     backgroundColor: theme.COLORS.WHITE,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
   },
   search: {
     height: 48,
-    width: width - 32,
+    width: windowWidth - 32,
     marginHorizontal: 16,
     borderWidth: 1,
     borderRadius: 3,
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     backgroundColor: theme.COLORS.TRANSPARENT,
-    width: width * 0.50,
+    width: windowWidth * 0.50,
     borderRadius: 0,
     borderWidth: 0,
     height: 24,
