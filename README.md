@@ -1,7 +1,7 @@
 # astric*
 
 <p align="center">
-  <img width="600" height="400" src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png">
+  <img src="https://github.com/mughees-asif/astric/blob/master/assets/images/logo.png">
 </p>
 
 ## Getting Started
