@@ -30,5 +30,9 @@ export default {
   },
   SIZES: {
     BLOCK_SHADOW_RADIUS: 2,
-  }
+  },
+  FONTS: {
+    LEAGUESPARTANBOLD:'LeagueSpartan-Bold',
+    SANCHEZ: 'Sanchez'
+  },
 };

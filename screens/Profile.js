@@ -1,81 +1,113 @@
-import React from 'react';
-import { StyleSheet, Dimensions, ScrollView, Image, ImageBackground, Platform } from 'react-native';
-import { Block, Text, theme } from 'galio-framework';
-import { LinearGradient } from 'expo-linear-gradient';
-
-import { Icon } from '../components';
-import { Images, materialTheme } from '../constants';
-import { HeaderHeight } from "../constants/utils";
+import React, {createContext, useContext} from 'react';
+import {Dimensions, FlatList, Image, ImageBackground, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Block, Text, theme} from 'galio-framework';
+import {Images, materialTheme} from '../constants';
 
 const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
+const profile = {
+    firstname: "Anthony",
+    surname: "Costas Paraskeva",
+    email: "anthony.paraskeva@test.com",
+    phone: "+447123456789",
+    profilePic: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.linkedin.com%2Fpub%2Fdir%2FAnthony%2FParaskeva&psig=AOvVaw1GqUwv5on_ox0KXnkVTKwl&ust=1589311815966000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOiurIPGrOkCFQAAAAAdAAAAABAE',
+    savedPlaces: [
+        {company: "Ant's Autos", id: "company1", catagory: "Mechanics", address1: "1 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 4.5},
+        {company: "Rubbish Name", id: "company2", catagory: "Mechanics",  address1: "2 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 1},
+        {company: "Neo Nitro", id: "company3", catagory: "Mechanics",   address1: "Random House", address2: "3 Random street", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 3},
+    ]
+};
 
 export default class Profile extends React.Component {
-  render() {
-    return (
-      <Block flex style={styles.profile}>
-        <Block flex>
-          <ImageBackground
-            source={{uri: Images.Profile}}
-            style={styles.profileContainer}
-            imageStyle={styles.profileImage}>
-            <Block flex style={styles.profileDetails}>
-              <Block style={styles.profileTexts}>
-                <Text color="white" size={28} style={{ paddingBottom: 8 }}>John Doe</Text>
-                <Block row space="between">
-                  <Block row>
-                    <Block middle style={styles.pro}>
-                      <Text size={16} color="white">Pro</Text>
-                    </Block>
-                    <Text color="white" size={16} muted style={styles.seller}>Seller</Text>
-                    <Text size={16} color={materialTheme.COLORS.WARNING}>
-                      4.8 <Icon name="shape-star" family="GalioExtra" size={14} />
-                    </Text>
-                  </Block>
-                  <Block>
-                    <Text color={theme.COLORS.MUTED} size={16}>
-                      <Icon name="map-marker" family="font-awesome" color={theme.COLORS.MUTED} size={16} />
-                      {` `} London, UK
-                      </Text>
-                  </Block>
-                </Block>
+
+  renderItem = ({ item }) => {
+
+      switch (true) {
+        case (item.rating > 4):
+          return (
+              <Block row>
+                <Image source={require('../assets/icons/happyface.png')} style={styles.faceImage}></Image>
+                <Text style={styles.catagoryText}> EXCELLENT({item.rating})</Text>
               </Block>
-              <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} style={styles.gradient} />
-            </Block>
+          )
+        case (item.rating > 3):
+          return (
+                  <Block row>
+                    <Image source={require('../assets/icons/happyface.png')} style={styles.faceImage}></Image>
+                    <Text style={styles.catagoryText}> GOOD({item.rating})</Text>
+                  </Block>
+              )
+
+        case (item.rating >= 2):
+        return (
+                <Block row>
+                  <Image source={require('../assets/icons/mehface.png')} style={styles.faceImage}></Image>
+                  <Text style={styles.catagoryText}> AVERAGE({item.rating})</Text>
+                </Block>
+            )
+
+        case (item.rating > 1):
+        return (
+                <Block row>
+                  <Image source={require('../assets/icons/sadface.png')} style={styles.faceImage}></Image>
+                  <Text style={styles.catagoryText}> POOR({item.rating})</Text>
+                </Block>
+            )
+
+        default:
+        return (
+                <Block row>
+                  <Image source={require('../assets/icons/sadface.png')} style={styles.faceImage}></Image>
+                  <Text style={styles.catagoryText}> VERY POOR({item.rating})</Text>
+                </Block>
+            )
+      }
+  }
+
+  render() {
+    const {navigation} = this.props;
+    return (
+      <Block flex style={styles.profilePage}>
+        <Block style={styles.profileBlock}>
+          <ImageBackground
+              source={require('../assets/icons/profilePhoto.png')}
+              style={styles.profileContainer}
+              imageStyle={styles.profileImage}>
           </ImageBackground>
+            <Block>
+              <Text style={styles.accountNameText}>{profile.firstname} {profile.surname}</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('ProfileEdit')}>
+                <Text style={styles.editAccountText}>EDIT ACCOUNT</Text>
+              </TouchableOpacity>
+            </Block>
         </Block>
         <Block flex style={styles.options}>
+          <Text style={styles.savedPlacesText}>SAVED PLACES</Text>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Block row space="between" style={{ padding: theme.SIZES.BASE, }}>
-              <Block middle>
-                <Text bold size={12} style={{marginBottom: 8}}>36</Text>
-                <Text muted size={12}>Orders</Text>
-              </Block>
-              <Block middle>
-                <Text bold size={12} style={{marginBottom: 8}}>5</Text>
-                <Text muted size={12}>Bids & Offers</Text>
-              </Block>
-              <Block middle>
-                <Text bold size={12} style={{marginBottom: 8}}>2</Text>
-                <Text muted size={12}>Messages</Text>
-              </Block>
-            </Block>
-            <Block row space="between" style={{ paddingVertical: 16, alignItems: 'baseline' }}>
-              <Text size={16}>Recently viewed</Text>
-              <Text size={12} color={theme.COLORS.PRIMARY} onPress={() => this.props.navigation.navigate('Home')}>View All</Text>
-            </Block>
-            <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
-              <Block row space="between" style={{ flexWrap: 'wrap' }} >
-                {Images.Viewed.map((img, imgIndex) => (
-                  <Image
-                    source={{ uri: img }}
-                    key={`viewed-${img}`}  
-                    resizeMode="cover"
-                    style={styles.thumb}
-                  />
-                ))}
-              </Block>
-            </Block>
+            <FlatList
+                data={profile.savedPlaces}
+                keyExtractor={(item, index) => item.id}
+                renderItem={({item, index}) => (
+                    <Block style={styles.rows}>
+                      <TouchableOpacity onPress={() => {
+                          navigation.navigate('Business', {
+                              selectedPlace: item
+                          })
+                      }}>
+                        <Block row middle space="between" style={{paddingTop: 20}}>
+                          <Block style={styles.leftContainer}>
+                            <Image source={require('../assets/icons/companyPhoto.png')} style={styles.companyImage}></Image>
+                          </Block>
+                          <Block style={styles.rightContainer}>
+                              <Text style={styles.companyText}>{item.company}</Text>
+                              <Text style={styles.catagoryText}>{item.catagory}</Text>
+                              {this.renderItem({item})}
+                          </Block>
+                        </Block>
+                      </TouchableOpacity>
+                    </Block>
+                )}
+            />
           </ScrollView>
         </Block>
       </Block>
@@ -84,27 +116,75 @@ export default class Profile extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  profile: {
-    marginTop: Platform.OS === 'android' ? -HeaderHeight : 0,
-    marginBottom: -HeaderHeight * 2,
+  profilePage: {
+    backgroundColor: 'white',
+    width: width,
+    height: height,
+  },
+  profileBlock:{
+    width: width,
+    paddingTop: height > 812 ? height*0.06 : height * 0.11,
+    alignItems: 'center'
   },
   profileImage: {
-    width: width * 1.1,
-    height: 'auto',
+    height: width*0.5,
+    width: width*0.5,
+    aspectRatio: 1,
+    borderRadius: 2000,
+    borderWidth: 8,
+    borderColor: materialTheme.COLORS.PLACEHOLDER
   },
   profileContainer: {
-    width: width,
-    height: height / 2,
+    width: width*0.5,
+    height: height === 812 ? height*0.25 : height < 812 ?  height * 0.3 : height > 812 ? height * 0.35 : height*0.25,
   },
-  profileDetails: {
+  profile: {
+    height: height*0.6,
     paddingTop: theme.SIZES.BASE * 4,
     justifyContent: 'flex-end',
     position: 'relative',
   },
-  profileTexts: {
-    paddingHorizontal: theme.SIZES.BASE * 2,
-    paddingVertical: theme.SIZES.BASE * 2,
-    zIndex: 2
+  leftContainer: {
+    width: width/6,
+  },
+  rightContainer: {
+    width: width*0.6
+  },
+  accountNameText: {
+      textAlign: 'center',
+     fontFamily: materialTheme.FONTS.LEAGUESPARTANBOLD,
+      color: materialTheme.COLORS.LOGO_A,
+      fontSize: height > 812 ? 40 : 28,
+  },
+  editAccountText: {
+      textAlign: 'center',
+      color: materialTheme.COLORS.LOGO_S,
+      fontSize: height > 812 ? 22 : 16,
+      fontFamily: materialTheme.FONTS.SANCHEZ
+  },
+  savedPlacesText: {
+      textAlign: 'left',
+      color: materialTheme.COLORS.LOGO_S,
+      fontSize: height > 812 ? 22 : 16,
+      fontFamily: materialTheme.FONTS.SANCHEZ
+  },
+  companyText:{
+      color: materialTheme.COLORS.LOGO_A,
+     fontFamily: materialTheme.FONTS.LEAGUESPARTANBOLD,
+      fontSize: height > 812 ? 36 : 20,
+  },
+  catagoryText:{
+      color: materialTheme.COLORS.LOGO_I,
+      fontSize: height > 812 ? 22 : 16,
+      fontFamily: materialTheme.FONTS.SANCHEZ
+  },
+  faceImage:{
+      height: height > 812 ? 30 : 18,
+      width: height > 812 ? 30 : 18,
+  },
+  companyImage:{
+      height: height > 812 ? 180 : 100,
+      width: height > 812 ? 180 : 100,
   },
   pro: {
     backgroundColor: materialTheme.COLORS.LABEL,
@@ -120,15 +200,8 @@ const styles = StyleSheet.create({
   options: {
     position: 'relative',
     padding: theme.SIZES.BASE,
-    marginHorizontal: theme.SIZES.BASE,
-    marginTop: -theme.SIZES.BASE * 7,
-    borderTopLeftRadius: 13,
-    borderTopRightRadius: 13,
+    // marginTop: height*-0.1,
     backgroundColor: theme.COLORS.WHITE,
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 8,
-    shadowOpacity: 0.2,
     zIndex: 2,
   },
   thumb: {

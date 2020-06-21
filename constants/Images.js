@@ -1,8 +1,5 @@
 const Onboarding = 'https://images.unsplash.com/photo-1527067829737-402993088e6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1953&q=80';
 const Pro = 'https://images.unsplash.com/photo-1485796826113-174aa68fd81b?fit=crop&w=840&q=80';
-const Products = {
-  'Accessories': 'https://source.unsplash.com//l1MCA0VyNrk/840x840',
-};
 
 const Profile = 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80';
 const Avatar = 'https://images.unsplash.com/photo-1518725522904-4b3939358342?fit=crop&w=210&q=80';
@@ -19,7 +16,6 @@ const Viewed = [
 export default {
   Onboarding,
   Pro,
-  Products,
   Profile,
   Viewed,
   Avatar,

@@ -1,20 +1,28 @@
 import React from 'react';
-import { Easing, Animated, Dimensions, Image } from 'react-native';
-import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {Dimensions} from 'react-native';
+import {createStackNavigator} from "@react-navigation/stack";
+import {createDrawerNavigator} from "@react-navigation/drawer";
 
-import { Block, Text, theme } from "galio-framework";
-
-import ComponentsScreen from '../screens/Components';
 import HomeScreen from '../screens/Home';
-import OnboardingScreen from '../screens/Onboarding';
 import ProfileScreen from '../screens/Profile';
-import ProScreen from '../screens/Pro';
+import ProfileEditScreen from '../screens/ProfileEdit';
+import FriendsScreen from '../screens/Friends';
+import OffersScreen from '../screens/Offers';
+import NotificationsScreen from '../screens/Notifications';
 import SettingsScreen from '../screens/Settings';
+import AboutAppScreen from '../screens/AboutApp';
+
+import LoginScreen from '../screens/Login';
+import ForgotPasswordScreen from '../screens/ForgotPassword';
+import SignupScreen from '../screens/SignUp';
+import SearchScreen from '../screens/Search';
+import BusinessScreen from '../screens/Business';
+import BusinessAccountScreen from '../screens/BusinessAccount';
+import BusinessAccount from '../screens/BusinessAccount';
 
 import CustomDrawerContent from './Menu';
-import { Icon, Header } from '../components';
-import { Images, materialTheme } from "../constants/";
+import {Header} from '../components';
+import {materialTheme} from "../constants/";
 
 const { width } = Dimensions.get("screen");
 
@@ -22,105 +30,105 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const profile = {
-  avatar: Images.Profile,
-  name: "John Doe",
-  type: "Seller",
-  plan: "Pro",
-  rating: 4.8
-};
+    name: "Anthony Costas Paraskvea",
+        savedPlaces: [
+        {company: "Ant's Autos", id: "company1", catagory: "Mechanics", address1: "1 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 4.5},
+        {company: "Rubbish Name", id: "company2", catagory: "Mechanics",  address1: "2 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 1},
+        {company: "Neo Nitro", id: "company3", catagory: "Mechanics",   address1: "Random House", address2: "3 Random street", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 3},
+    ]
+}
 
-function ProfileStack(props) {
-  return (
-    <Stack.Navigator initialRouteName="Profile" mode="card" tr headerMode="screen">
-      <Stack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Profile"
-              scene={scene}
-              navigation={navigation}
+function genericStackNavigator(props, routename, titlename, screen) {
+    return(
+        <Stack.Navigator initialRouteName={routename} mode="card" tr headerMode="screen">
+            <Stack.Screen
+                name={routename}
+                component={screen}
+                options={{
+                    header: ({navigation, scene}) => (
+                        <Header white transparent title={titlename} scene={scene} navigation={navigation}/>
+                    ),
+                    headerTransparent: true
+                }}
             />
-          ),
-          headerTransparent: true
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function SettingsStack(props) {
-  return (
-    <Stack.Navigator
-      initialRouteName="Settings"
-      mode="card"
-      headerMode="screen"
-    >
-      <Stack.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Settings" scene={scene} navigation={navigation} />
-          )
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function ComponentsStack(props) {
-  return (
-    <Stack.Navigator mode="card" headerMode="screen">
-      <Stack.Screen
-        name="Components"
-        component={ComponentsScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Components" scene={scene} navigation={navigation} />
-          )
-        }}
-      />
-    </Stack.Navigator>
-  );
+        </Stack.Navigator>
+    )
 }
 
 function HomeStack(props) {
-  return (
-    <Stack.Navigator mode="card" headerMode="screen">
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              search
-              tabs
-              title="Home"
-              navigation={navigation}
-              scene={scene}
-            />
-          )
-        }}
-      />
-      <Stack.Screen
-        name="Under Construction"
-        component={ProScreen}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header back white transparent title="" navigation={navigation} scene={scene} />
-          ),
-          headerTransparent: true
-        }}
-      />
-    </Stack.Navigator>
-  );
+    return genericStackNavigator(props, 'Home','Home', HomeScreen);
 }
 
-function AppStack(props) {
+function ProfileStack(props) {
+  return genericStackNavigator(props, 'Profile', 'Account', ProfileScreen);
+}
+
+function ProfileEditStack(props) {
+  return genericStackNavigator(props, 'ProfileEdit', 'Edit', ProfileEditScreen);
+}
+
+function FriendsStack(props) {
+    return genericStackNavigator(props, 'Friends', 'Friends', FriendsScreen);
+}
+
+function OffersStack(props) {
+    return genericStackNavigator(props, 'Offers','Offers', OffersScreen);
+}
+
+function NotificationsStack(props) {
+    return genericStackNavigator(props, 'Notifications', 'Notifications', NotificationsScreen);
+}
+
+function SettingsStack(props) {
+  return genericStackNavigator(props, 'Settings', 'Settings', SettingsScreen);
+}
+
+function AboutAppStack(props) {
+  return genericStackNavigator(props, 'AboutApp','About App', AboutAppScreen);
+}
+
+function LoginStack(props) {
+  return genericStackNavigator(props, 'Login','Login', LoginScreen);
+}
+
+function ForgotPasswordStack(props) {
+  return genericStackNavigator(props, 'ForgotPassword','Password Reset', ForgotPasswordScreen);
+}
+
+function SignupStack(props) {
+  return genericStackNavigator(props, 'Signup','Signup', SignupScreen);
+}
+
+function SearchStack(props) {
+  return genericStackNavigator(props, 'Search','Search', SearchScreen);
+}
+
+function BusinessStack(props) {
+    return genericStackNavigator(props, 'Business','Places', BusinessScreen);
+}
+
+function BusinessAccountStack(props) {
+    return genericStackNavigator(props, 'BusinessAccount','Business Account', BusinessAccountScreen);
+}
+
+export const createRootNavigator = (signedIn = false) => {
+    return createSwitchNavigator(
+        {
+            SignedIn: {
+                screen: SignedIn
+            },
+            SignedOut: {
+                screen: SignedOut
+            }
+        },
+        {
+            initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+        }
+    );
+};
+
+
+export default function AppStack(props) {
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
@@ -139,10 +147,8 @@ function AppStack(props) {
         itemStyle: {
           width: width * 0.74,
           paddingHorizontal: 12,
-          // paddingVertical: 4,
           justifyContent: "center",
           alignContent: "center",
-          // alignItems: 'center',
           overflow: "hidden"
         },
         labelStyle: {
@@ -151,123 +157,23 @@ function AppStack(props) {
         }
       }}
       initialRouteName="Home"
+      drawerPosition="right"
     >
-      <Drawer.Screen
-        name="Home"
-        component={HomeStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <Icon
-              size={16}
-              name="shop"
-              family="GalioExtra"
-              color={focused ? "white" : materialTheme.COLORS.MUTED}
-            />
-          )
-        }}
-      />
-      <Drawer.Screen
-          name="Profile"
-          component={ProfileStack}
-          options={{
-              drawerIcon: ({ focused }) => (
-                  <Image
-                      source={require('../assets/icons/profile.png')}
-                      fadeDuration={0}
-                      style={{width: 20, height: 20}} />
-              )
-          }}
-      />
-      <Drawer.Screen
-        name="Friends"
-        component={ProScreen}
-        options={{
-          drawerIcon: ({ focused }) => (
-              <Icon
-                  size={16}
-                  name="gears"
-                  family="font-awesome"
-                  color={focused ? "white" : materialTheme.COLORS.MUTED}
-                  style={{ marginRight: -3 }}
-            />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name="Offers"
-        component={ProScreen}
-        options={{
-          drawerIcon: ({ focused }) => (
-              <Icon
-                  size={16}
-                  name="gears"
-                  family="font-awesome"
-                  color={focused ? "white" : materialTheme.COLORS.MUTED}
-                  style={{ marginRight: -3 }}
-            />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name="Notifications"
-        component={ProScreen}
-        options={{
-          drawerIcon: ({ focused }) => (
-              <Icon
-                  size={16}
-                  name="gears"
-                  family="font-awesome"
-                  color={focused ? "white" : materialTheme.COLORS.MUTED}
-                  style={{ marginRight: -3 }}
-            />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name="Settings"
-        component={SettingsStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <Icon
-              size={16}
-              name="gears"
-              family="font-awesome"
-              color={focused ? "white" : materialTheme.COLORS.MUTED}
-              style={{ marginRight: -3 }}
-            />
-          )
-        }}
-      />
-      <Drawer.Screen
-        name="About app"
-        component={ComponentsStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <Icon
-                size={16}
-                name="gears"
-                family="font-awesome"
-                color={focused ? "white" : materialTheme.COLORS.MUTED}
-                style={{ marginRight: -3 }}
-            />
-          )
-        }}
-      />
-    </Drawer.Navigator>
-  );
-}
+        <Drawer.Screen name="Home" component={HomeStack} />
+        <Drawer.Screen name="Profile" component={ProfileStack} />
+        <Drawer.Screen name="ProfileEdit" component={ProfileEditStack} />
+        <Drawer.Screen name="Friends" component={FriendsStack} />
+        <Drawer.Screen name="Offers" component={OffersStack} />
+        <Drawer.Screen name="Notifications" component={NotificationsStack} />
+        <Drawer.Screen name="Settings" component={SettingsStack} />
+        <Drawer.Screen name="About app" component={AboutAppStack} />
 
-export default function OnboardingStack(props) {
-  return (
-    <Stack.Navigator mode="card" headerMode="none">
-      <Stack.Screen
-        name="Onboarding"
-        component={OnboardingScreen}
-        option={{
-          headerTransparent: true
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
-    </Stack.Navigator>
+        <Drawer.Screen name="Login" component={LoginStack} />
+        <Drawer.Screen name="ForgotPassword" component={ForgotPasswordStack} />
+        <Drawer.Screen name="Signup" component={SignupStack} />
+        <Drawer.Screen name="Search" component={SearchStack} />
+        <Drawer.Screen name="Business" component={BusinessStack} />
+        <Drawer.Screen name="Business Account" component={BusinessAccountStack} />
+    </Drawer.Navigator>
   );
 }

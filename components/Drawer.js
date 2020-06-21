@@ -4,12 +4,6 @@ import {Block, Text, theme} from "galio-framework";
 import materialTheme from "../constants/Theme";
 
 const proScreens = [
-    "Woman",
-    "Man",
-    "Kids",
-    "New Collection",
-    "Sign In",
-    "Sign Up"
 ];
 
 class DrawerItem extends React.Component {
@@ -19,154 +13,90 @@ class DrawerItem extends React.Component {
         switch (title) {
             case "Home":
                 return (
-                    <Image
-                        source={require('../assets/icons/home.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/home.png')} style={styles.icon} />
                 );
             case "Profile":
                 return (
-                    <Image
-                        source={require('../assets/icons/profile.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/profile.png')} style={styles.icon} />
                 );
             case "Friends":
                 return (
-                    <Image
-                        source={require('../assets/icons/friends.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/friends.png')} style={styles.icon} />
                 );
             case "Offers":
                 return (
-                    <Image
-                        source={require('../assets/icons/offers.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/offers.png')} style={styles.icon} />
                 );
             case "Notifications":
                 return (
-                    <Image
-                        source={require('../assets/icons/notifications2.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/notifications2.png')} style={styles.icon} />
                 );
             case "Settings":
                 return (
-                    <Image
-                        source={require('../assets/icons/settings.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/settings.png')} style={styles.icon} />
                 );
             case "About app":
                 return (
-                    <Image
-                        source={require('../assets/icons/aboutapp.png')}
-                        fadeDuration={0}
-                        style={{width: 40, height: 40}}/>
+                    <Image source={require('../assets/icons/aboutapp.png')} style={styles.icon} />
                 );
             default:
-                return null;
+                return (
+                    <Image source={require('../assets/icons/aboutapp.png')} style={styles.icon} />
+                );
         }
     };
 
-    renderLabel = () => {
+    renderLabel = (signedIn = false) => {
         const {title} = this.props;
         switch (title) {
             case "Home":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_A
-                      }}
-                  >
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_A}>
                     {title}
                   </Text>
               );
             case "Profile":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_S
-                      }}
-                  >
-                    {title}
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_S}>
+                      {title}
                   </Text>
               );
             case "Friends":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_T
-                      }}
-                  >
-                    {title}
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_T}>
+                      {title}
                   </Text>
               );
             case "Offers":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_I
-                      }}
-                  >
-                    {title}
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_I}>
+                      {title}
                   </Text>
               );
             case "Notifications":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_S
-                      }}
-                  >
-                    {title}
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_S}>
+                      {title}
                   </Text>
               );
             case "Settings":
               return (
-                  <Text
-                      size={18}
-                      style={{
-                        fontSize: 20,
-                        fontFamily: "leaguespartan-bold",
-                        color: materialTheme.COLORS.LOGO_T
-                      }}
-                  >
-                    {title}
+                  <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_T}>
+                      {title}
                   </Text>
               );
             case "About app":
                 return (
-                    <Text
-                        size={18}
-                        style={{
-                            fontSize: 20,
-                            fontFamily: "leaguespartan-bold",
-                            color: materialTheme.COLORS.LOGO_I
-                        }}
-                    >
+                    <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_I}>
                         {title}
                     </Text>
                 );
             default:
-                return null;
+                return (
+                    <Text size={18} style={styles.iconText} color={materialTheme.COLORS.LOGO_A}>
+                        {title}
+                    </Text>
+                );
         }
     };
 
@@ -177,10 +107,7 @@ class DrawerItem extends React.Component {
             <TouchableOpacity style={{height: 55}} onPress={() => {
                 navigation.navigate(title)
             }}>
-                <Block
-                    flex
-                    row
-                    style={[
+                <Block flex row style={[
                         styles.defaultStyle,
                         focused ? [styles.activeStyle, styles.shadow] : null
                     ]}
@@ -207,6 +134,14 @@ const styles = StyleSheet.create({
     activeStyle: {
         backgroundColor: materialTheme.COLORS.MENU_BACKGROUND,
         borderRadius: 4
+    },
+    icon: {
+        width: 40,
+        height: 40
+    },
+    iconText: {
+        fontSize: 20,
+        fontFamily: materialTheme.FONTS.LEAGUESPARTANBOLD
     },
     shadow: {
         shadowColor: theme.COLORS.BLACK,

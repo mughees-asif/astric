@@ -1,16 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, Dimensions, ScrollView, TextInput } from 'react-native';
+import { Image, StyleSheet, Dimensions, TextInput } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
-
-import { Icon, Product } from '../components/';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-import products from '../constants/products';
 import {materialTheme} from "../constants";
 
 export default class Home extends React.Component {
-  
+
   renderProducts = () => {
     return (
       <ScrollView
@@ -21,6 +18,7 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <Block flex style={styles.home}>
         <Image
@@ -33,6 +31,11 @@ export default class Home extends React.Component {
           placeholderTextColor='#000000'
           style={styles.search}
           placeholder="Type here..."
+          value={ this.props.searchName }
+          keyboardType="default"
+          returnKeyType="search"
+          onSubmitEditing={a => navigation.navigate('Search') }
+
         />
       </Block>
     );
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
   home: {
     width: windowWidth,
     backgroundColor: 'white',
-    paddingTop: windowHeight/5
+    paddingTop: windowHeight/5+100
   },
   logo: {
     width: windowWidth - 32,
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginHorizontal: 16,
     fontSize: 20,
-    fontFamily: "leaguespartan-bold"
+    fontFamily: materialTheme.FONTS.LEAGUESPARTANBOLD
   },
   search: {
     height: 48,
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     color: theme.COLORS.BLACK,
     fontWeight: 'bold',
     fontSize: 18,
-    fontFamily: "leaguespartan-bold",
+    fontFamily: materialTheme.FONTS.LEAGUESPARTANBOLD,
     backgroundColor: '#af62Cf',
     marginHorizontal: 16,
     borderRadius: 10,
@@ -102,9 +105,5 @@ const styles = StyleSheet.create({
   divider: {
     borderRightWidth: 0.3,
     borderRightColor: theme.COLORS.MUTED,
-  },
-  products: {
-    width: windowWidth - theme.SIZES.BASE * 2,
-    paddingVertical: theme.SIZES.BASE * 2,
-  },
+  }
 });

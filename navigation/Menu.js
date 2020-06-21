@@ -1,11 +1,10 @@
-import React from "react";
+import React, {createContext, useContext} from "react";
 import { TouchableWithoutFeedback, ScrollView, StyleSheet, Image } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 import { useSafeArea } from "react-native-safe-area-context";
 
 import { Icon, Drawer as DrawerCustomItem } from '../components/';
 import { Images, materialTheme } from "../constants/";
-
 
 function CustomDrawerContent({
   drawerPosition,
@@ -16,15 +15,21 @@ function CustomDrawerContent({
   ...rest
 }) {
   const insets = useSafeArea();
-  const screens = [
+  const fullScreens = [
     "Home",
     "Profile",
     "Friends",
     "Offers",
     "Notifications",
     "Settings",
-    "About app"
+    "About app",
   ];
+  const unauthenticatedScreens = [
+    "Home",
+    "Login",
+    "About app",
+  ];
+  const signedIn = false;
   return (
     <Block
       style={styles.container}
@@ -41,17 +46,29 @@ function CustomDrawerContent({
           ]}
           showsVerticalScrollIndicator={false}
         >
-          {screens.map((item, index) => {
-            return (
-              <DrawerCustomItem
-                title={item}
-                key={index}
-                navigation={navigation}
-                focused={state.index === index ? true : false}
-                fontcolour=''
-              />
-            );
-          })}
+          {signedIn
+          ? fullScreens.map((item, index) => {
+                return (
+                    <DrawerCustomItem
+                        title={item}
+                        key={index}
+                        navigation={navigation}
+                        focused={state.index === index ? true : false}
+                        fontcolour=''
+                    />
+                );
+              })
+          : unauthenticatedScreens.map((item, index) => {
+                return (
+                    <DrawerCustomItem
+                        title={item}
+                        key={index}
+                        navigation={navigation}
+                        focused={state.index === index ? true : false}
+                        fontcolour=''
+                    />
+                );
+              })}
         </ScrollView>
       </Block>
     </Block>
@@ -62,6 +79,7 @@ function CustomDrawerContent({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 50,
   },
   header: {
     backgroundColor: '#4B1958',

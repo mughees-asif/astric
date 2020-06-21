@@ -3,7 +3,6 @@
  =========================================================
  * Material Kit React Native - v1.4.0
  =========================================================
- * Product Page: https://demos.creative-tim.com/material-kit-react-native/
  * Copyright 2019 Creative Tim (http://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/material-kit-react-native/blob/master/LICENSE)
  =========================================================
@@ -11,21 +10,22 @@
 
 */
 
-import React from 'react';
+import React, {createContext} from 'react';
 import { Platform, StatusBar, Image } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import { Block, GalioProvider } from 'galio-framework';
 import * as Font from 'expo-font';
 
-import { Images, products, materialTheme } from './constants/';
+import { Images, materialTheme } from './constants/';
 
 import { NavigationContainer } from '@react-navigation/native';
 import Screens from './navigation/Screens';
 
 // Before rendering any navigation stack
 import { enableScreens } from 'react-native-screens';
-import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
+import ApiJKeys from "./constants/ApiKeys";
+import * as firebase from "firebase";
 enableScreens();
 
 // cache app images
@@ -38,12 +38,10 @@ const assetImages = [
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'leaguespartan-bold': require('./assets/fonts/LeagueSpartan-Bold.otf')
+    'LeagueSpartan-Bold': require('./assets/fonts/LeagueSpartan-Bold.otf'),
+    'Sanchez': require('./assets/fonts/Sanchez-Regular.ttf')
   });
 };
-
-// cache product images
-products.map(product => assetImages.push(product.image));
 
 function cacheImages(images) {
   return images.map(image => {
@@ -55,9 +53,21 @@ function cacheImages(images) {
   });
 }
 
-export default class App extends React.Component {  
+export default class App extends React.Component {
+
+  constructor() {
+    super();
+
+    //initaliase firebase
+    if(!firebase.apps.length) {
+      firebase.initializeApp(ApiJKeys.FirebaseConfig);
+    }
+
+  }
+
   state = {
     isLoadingComplete: false,
+    isProfileLoaded: false,
   };
 
   render() {
@@ -97,5 +107,19 @@ export default class App extends React.Component {
 
   _handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
+  };
+
+  _handleLoadingProfile = () => {
+    this.setState({ isProfileLoaded: true });
+    navigator.navigate('Profile', {
+      profile: {
+        name: "Anthony Costas Paraskvea",
+        savedPlaces: [
+          {company: "Ant's Autos", id: "company1", catagory: "Mechanics", address1: "1 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 4.5},
+          {company: "Rubbish Name", id: "company2", catagory: "Mechanics",  address1: "2 Random street", address2: "", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 1},
+          {company: "Neo Nitro", id: "company3", catagory: "Mechanics",   address1: "Random House", address2: "3 Random street", city: "Random", zipcode: "R44D0M", phone:"0123456789", email:"random@test.com", rating: 3},
+        ]
+      }
+    });
   };
 }

@@ -1,7 +1,6 @@
 {
   "expo": {
     "name": "astric",
-    "description": "Growing communities, connecting businesses",
     "slug": "astric",
     "privacy": "unlisted",
     "sdkVersion": "36.0.0",
@@ -13,7 +12,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/images/loading.gif",
+      "image": "./assets/images/zoom.png",
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
